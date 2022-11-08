@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <sys/types.h>
-#include <unistd.h>
+#include "main.h"
 
 /**
  * main - Calls the getpid & getppid functions
