@@ -1,13 +1,14 @@
 #include <stdio.h>
 
 /**
- * main - Testing terminal in VS code
- *
+ * main - testing VS code
+ * 
  * Return: 0
  */
 
 int main(void)
 {
-	printf("Hello world");
+	printf("Hello World\n");
+
 	return (0);
 }
