@@ -14,7 +14,7 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
     char *prompt = "(ZLShell) $ ";
 
     /*To store the address f the buffer holding whatever was typed*/
-    char *lineptr
+    char *lineptr;
     /*To store the alloacted size in bytes*/
     size_t n = 0;
 
