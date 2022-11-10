@@ -18,11 +18,16 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
     /*To store the alloacted size in bytes*/
     size_t n = 0;
 
+    /*Creating an infinite loop*/
+    while (1)
+    {
     printf("%s", prompt);
-    /*Stdin represents the stream which represents the source from which we want the function to get the data from. In our case the keyboard aka standard input*/
+    /*Stdin is stream that represents the source we want the function to get the data from, standard input*/
     getline(&lineptr, &n, stdin);
     printf("%s\n", lineptr);
 
     free(lineptr); /*getline alloactes memory dynamically, so we have to free the memory*/
+    }
+
     return (0);
 }
