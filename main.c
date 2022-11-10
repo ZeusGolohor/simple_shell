@@ -9,7 +9,7 @@
  * Return: 0
  */
 
-int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
+int main(int argc, char **argv)
 {
 	char *prompt = "(ZLShell) $ ";
 
@@ -19,6 +19,9 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 	size_t n = 0;
 	/*Variable that holds the return value of the getline function*/
 	ssize_t nchars_read;
+
+	/*Declaring void variables*/
+	(void)argc; (void)argv;
 
 	/*Creating an infinite loop*/
 	while (1)
@@ -34,13 +37,9 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 	}
 	printf("%s\n", lineptr);
 
-	free(lineptr); /*getline alloactes memory dynamically, so we have to free the memory*/
+ /*getline alloactes memory dynamically, so we have to free the memory*/
 	}
-
-<<<<<<< HEAD
-    return (0);
-}
-=======
+	
 	return (0);
 }
->>>>>>> 1f26896b908c85599dcff1d38121bf4ac09daf05
+
