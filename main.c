@@ -34,7 +34,8 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv)
 	}
 	printf("%s\n", lineptr);
 
-	free(lineptr); /*getline alloactes memory dynamically, so we have to free the memory*/
+	/*getline alloactes memory dynamically, so we have to free the memory*/
+	free(lineptr); 
 	}
 
 	return (0);
