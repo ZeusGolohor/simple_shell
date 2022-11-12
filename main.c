@@ -26,11 +26,13 @@ int main(int argc, char **argv)
 	/*To serve as the counter */
 	int num_tokens = 0;
 	/*To store the token generated*/
-	char *tokens;
+	char *token;
+	int i;
+	int counter;
 
 
 	/*Declaring void variables*/
-	(void)argc; (void)argv;
+	(void)argc;
 
 	/*Creating an infinite loop*/
 	while (1)
@@ -38,15 +40,10 @@ int main(int argc, char **argv)
 	printf("%s", prompt);
 	/*Stdin is stream that represents the source we want the function to get the data from, standard input*/
 	nchars_read = getline(&lineptr, &n, stdin);
-	/*Check if the getline function failed or reached EOF or user use C^ + D*/
-	if (nchars_read == -1)
-	{
-		printf("Exiting shell....\n");
-		return (-1);
-	}
 
 	/* Allocate space for a copy of the lineptr*/
 	lineptr_copy = malloc(sizeof(char) * nchars_read);
+
 	if (lineptr_copy == NULL)
 	{
 		perror("tsh: memory allocation error");
@@ -56,7 +53,16 @@ int main(int argc, char **argv)
 	/* Copy lineptr to lineptr_copy*/
 	strcpy(lineptr_copy, lineptr);
 
-	/* Split the string (lineptr) into an array of words*/
+	/*Check if the getline function failed or reached EOF or user use C^ + D*/
+	if (nchars_read == -1)
+	{
+		printf("Exiting shell....\n");
+		return (-1);
+	}
+	else{
+
+	/***** Split the string (lineptr) into an array of words *****/
+	/* Calculate the total number of tokens */
 	token = strtok(lineptr, delim);
 
 	/* Determine how may  tokens are there*/
@@ -67,11 +73,34 @@ int main(int argc, char **argv)
 	}
 	num_tokens++;
 
+	/* Allocate space to  hold the array of strings */
+	argv = malloc(sizeof(char *) * num_tokens);
+
+	/* Alloacte each token in the argv array*/
+	token = strtok(lineptr_copy, delim);
+
+	for (i = 0; token != NULL; i++)
+	{
+		argv[i] = malloc(sizeof(char) * strlen(toke));
+		strcpy(argv[i], token);
+
+		printf(">>>>> %s \n", argv[i]);
+		token = strtok(NULL, delim);
+
+	}
+	argv[i] = NULL;
+
+	for (counter = 0; counter<num_tokens-1; counter++)
+	{
+		printf("%s\n", argv[counter]);
+	}
 
 	printf("%s\n", lineptr);
 
  /*getline alloactes memory dynamically, so we have to free the memory*/
- /*free(lineptr); */
+	free(lineptr);
+	free(argv);
+	free(lineptr_copy);
 	}
 	
 	return (0);
