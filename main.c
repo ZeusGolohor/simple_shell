@@ -28,8 +28,6 @@ int main(int argc, char **argv)
 	/*To store the token generated*/
 	char *token;
 	int i;
-	/* int counter; */
-
 
 	/*Declaring void variables*/
 	(void)argc;
@@ -41,9 +39,15 @@ int main(int argc, char **argv)
 	/*Stdin is stream that represents the source we want the function to get the data from, standard input*/
 	nchars_read = getline(&lineptr, &n, stdin);
 
+	/*Check if the getline function failed or reached EOF or user use C^ + D*/
+	if (nchars_read == -1)
+	{
+		printf("Exiting shell....\n");
+		return (-1);
+	}
+
 	/* Allocate space for a copy of the lineptr*/
 	lineptr_copy = malloc(sizeof(char) * nchars_read);
-
 	if (lineptr_copy == NULL)
 	{
 		perror("tsh: memory allocation error");
@@ -53,15 +57,6 @@ int main(int argc, char **argv)
 
 	/* Copy lineptr to lineptr_copy*/
 	strcpy(lineptr_copy, lineptr);
-
-	/*Check if the getline function failed or reached EOF or user use C^ + D*/
-	if (nchars_read == -1)
-	{
-		printf("Exiting shell....\n");
-		return (-1);
-	}
-	else
-	{
 
 	/***** Split the string (lineptr) into an array of words *****/
 	/* Calculate the total number of tokens */
@@ -86,25 +81,18 @@ int main(int argc, char **argv)
 		argv[i] = malloc(sizeof(char) * strlen(token));
 		strcpy(argv[i], token);
 
-		printf(">>>>> %s \n", argv[i]);
 		token = strtok(NULL, delim);
-
 	}
 	argv[i] = NULL;
-	
-	/* Print the content of argv except the NULL byte*/
-	/*for (counter = 0; counter<num_tokens-1; counter++)
-	{
-		printf("%s\n", argv[counter]);
-	}*/
 
-	printf("%s\n", lineptr);
+	/* Execute the command */
+	execmd(argv);
+	}
 
  /*getline alloactes memory dynamically, so we have to free the memory*/
-	/*free(lineptr);*/
-	free(argv);
+	free(lineptr);
 	free(lineptr_copy);
-	}
+	
 	
 	return (0);
 }
