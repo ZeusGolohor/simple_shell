@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 	/*To store the token generated*/
 	char *token;
 	int i;
-	int counter;
+	/* int counter; */
 
 
 	/*Declaring void variables*/
@@ -49,6 +49,7 @@ int main(int argc, char **argv)
 		perror("tsh: memory allocation error");
 		return (-1);
 	}
+	}
 
 	/* Copy lineptr to lineptr_copy*/
 	strcpy(lineptr_copy, lineptr);
@@ -59,7 +60,8 @@ int main(int argc, char **argv)
 		printf("Exiting shell....\n");
 		return (-1);
 	}
-	else{
+	else
+	{
 
 	/***** Split the string (lineptr) into an array of words *****/
 	/* Calculate the total number of tokens */
@@ -81,7 +83,7 @@ int main(int argc, char **argv)
 
 	for (i = 0; token != NULL; i++)
 	{
-		argv[i] = malloc(sizeof(char) * strlen(toke));
+		argv[i] = malloc(sizeof(char) * strlen(token));
 		strcpy(argv[i], token);
 
 		printf(">>>>> %s \n", argv[i]);
@@ -89,16 +91,17 @@ int main(int argc, char **argv)
 
 	}
 	argv[i] = NULL;
-
-	for (counter = 0; counter<num_tokens-1; counter++)
+	
+	/* Print the content of argv except the NULL byte*/
+	/*for (counter = 0; counter<num_tokens-1; counter++)
 	{
 		printf("%s\n", argv[counter]);
-	}
+	}*/
 
 	printf("%s\n", lineptr);
 
  /*getline alloactes memory dynamically, so we have to free the memory*/
-	free(lineptr);
+	/*free(lineptr);*/
 	free(argv);
 	free(lineptr_copy);
 	}
