@@ -8,4 +8,6 @@
 
 #include <sys/types.h>
 
+void execmd(char **argv);
+
 #endif /* MAIN_H */
