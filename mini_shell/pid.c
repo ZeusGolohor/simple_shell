@@ -8,7 +8,9 @@
  */
 int main(void)
 {
-	printf("Current Procces: %d\n Parent Process: %d\n", getpid(), getppid());
+	pid_t my_pid;
 
+	my_pid = getpid();
+	printf("%u\n", my_pid);
 	return (0);
 }
