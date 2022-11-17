@@ -71,38 +71,37 @@ void pth_free(path_t *head);
 void env_free(path_t *head);
 
 /* string_funcs.c */
-int _strlen(char *s) //0x05
-void _puts(char *str); //0x05
+int _strlen(char *s) 
+void _puts(char *str);
 int _putchar(char c);
 char *_strncpy(char *dest, char *src, int n)
 
 /* string_help.c*/
-char *_strdup(const char *s); //0x0B 
-int _strcmp(char *s1, char *s2); //0x06
-char *_strcat(char *dest, char *src); //0x06
-char *_strcpy(char *dest, char *src); //0x05
+char *_strdup(const char *s); 
+int _strcmp(char *s1, char *s2);
+char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
 
 /* mylists.c*/
-list_t *add_nodeint(list_t **head, const int n); //0x13
-list_t *add_nodeint_end(list_t **head, const int n); //0x13
-size_t print_list(const list_t *h); //0x12
-int delete_nodeint_at_index(list_t **head, unsigned int index); //0x13
-void free_listint2(list_t **head); //0x13
+list_t *add_nodeint(list_t **head, const int n);
+list_t *add_nodeint_end(list_t **head, const int n);
+size_t print_list(const list_t *h);
+int delete_nodeint_at_index(list_t **head, unsigned int index);
+void free_listint2(list_t **head);
 
 /* mylists1.c*/
-size_t list_len(const list_t *h); //0x12
-char **list_to_strings(list_t *head); //new
-size_t print_list_all(const list_t *h); //new
-list_t *node_starts_with(list_t *node, char *prefix, char c); //new
-list_t *get_nodeint_at_index(list_t *head, unsigned int index); //0x13
-
+size_t list_len(const list_t *h);
+char **list_to_strings(list_t *head);
+size_t print_list_all(const list_t *h);
+list_t *node_starts_with(list_t *node, char *prefix, char c);
+list_t *get_nodeint_at_index(list_t *head, unsigned int index);
 
 
 
 /* exits.c */
-char *_strncpy(char *dest, char *src, int n); //0x06
-char *_strncat(char *dest, char *src, int n); //0x06
-char *_strchr(char *s, char c); //0x07
+char *_strncpy(char *dest, char *src, int n);
+char *_strncat(char *dest, char *src, int n);
+char *_strchr(char *s, char c);
 
 /* Variables */
 path_t *the_path;
@@ -113,8 +112,6 @@ void sig_handler(int sig_handler);
 
 
 
-
-char *_strchr(char *s, char c); 
 int _strspn(char *s, char *accept);
 
 
