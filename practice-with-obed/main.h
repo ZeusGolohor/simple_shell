@@ -9,5 +9,6 @@
 #include <sys/types.h>
 
 void execmd(char **argv);
+char *get_location(char *command);
 
 #endif /* MAIN_H */
