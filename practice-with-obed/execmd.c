@@ -16,8 +16,3 @@ void execmd(char **argv)
 	    }
     }
 }
-
-//We are trying it  from git bash VS terminal
-//This is pretty cool ngl
-//I know right
-//vim is the problem
