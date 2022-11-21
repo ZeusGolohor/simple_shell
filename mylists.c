@@ -57,28 +57,23 @@ list_t *add_nodeint_end(list_t **head, const int n)
 }
 
 /**
- * print_list - Function prints all the elements in a linked list
+ * print_list - prints only the str element of a list_t linked list
+ * @h: pointer to first node
  *
- * @h: pointer to first node in linked list
- *
- * Return: the number of nodes
+ * Return: size of list
  */
 size_t print_list(const list_t *h)
 {
-	size_t n = 0;
+	size_t i = 0;
 
 	while (h)
 	{
-		if (h->str == NULL)
-			printf("[0] (nil)\n");
-
-		else
-			printf("[%d] %s\n", h->len, h->str);
-
-		n++;
+		_puts(h->str ? h->str : "(nil)");
+		_puts("\n");
 		h = h->next;
+		i++;
 	}
-	return (n);
+	return (i);
 }
 
 /**
@@ -91,8 +86,8 @@ size_t print_list(const list_t *h)
  */
 int delete_nodeint_at_index(list_t **head, unsigned int index)
 {
-	listint_t *current;
-	listint_t *hold;
+	list_t *current;
+	list_t *hold;
 	unsigned int i;
 
 	i = 0;
