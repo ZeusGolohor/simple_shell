@@ -100,3 +100,20 @@ char *_strcpy(char *dest, char *src)
 	dest[x] = '\0';
 	return (dest);
 }
+
+/**
+ * _strcpy_src - copies a string at specific index
+ * @dest: destination
+ * @src: source (index)
+ * @n: legnth of destination
+ * Return: string copied
+*/
+char *_strcpy_src(char *dest, char *src, int n)
+{
+	int ct;
+
+	for (ct = 0 ; src[ct] != '\0' ; ct++, n++)
+		dest[ct] = src[n];
+	dest[ct] = '\0';
+	return (dest);
+}
