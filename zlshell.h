@@ -90,6 +90,10 @@ int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 
+/* atoi.c */
+int _numlen(int n);
+char *_atoi(int num);
+
 /* mylists.c*/
 list_t *add_nodeint(list_t **head, const int n);
 list_t *add_nodeint_end(list_t **head, const int n);
