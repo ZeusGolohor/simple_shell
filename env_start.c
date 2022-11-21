@@ -44,10 +44,10 @@ void env_start(char *str, char *value)
 	}
 	else 
 	{
-		while (node->next != NULL)
-			node = node->next;
+		while (node.next != NULL)
+			node = node.next;
 		var->ptr = new_env;
-		node->next = var;
+		node.next = var;
 		var->next = NULL;
 	}
 	free(val);
