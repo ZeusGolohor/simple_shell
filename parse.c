@@ -66,7 +66,7 @@ char **parse(char *buffer, char *delim)
 			free(words);
 			return (NULL);
 		}
-		_strncpy(words[i], tokens);
+		_strncpy(words[i], tokens, count);
 		i++;
 		tokens = _strtok(NULL, delim);
 	}
