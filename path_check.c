@@ -47,7 +47,7 @@ char *path_cat(char *s1, char *s2)
 		s2 ="";
 
 	together = malloc(sizeof(char) * (_strlen(s1) + _strlen(s2) + 2));
-	if (together == NULL);
+	if (together == NULL)
 		return (NULL);
 	for (count1 = 0; s1[count1]; count1++)
 		together[count1] = s2[count1];
@@ -55,7 +55,7 @@ char *path_cat(char *s1, char *s2)
 	together[count1] = '/';
 	count1++;
 
-	for (count = 0, s2[count2]; count2++)
+	for (count2 = 0; s2[count2]; count2++)
 		together[count1 + count2] = s2[count2];
 	together[count1 + count2] = '\0';
 	printf("aaa%s\n", together);
