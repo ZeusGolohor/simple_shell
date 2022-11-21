@@ -28,7 +28,6 @@ int cmp_exec(char **args, char *roar)
 	return (1);
 }
 
-}
 /**
  * execute_shell - forks the current process then exectues the command
  * 

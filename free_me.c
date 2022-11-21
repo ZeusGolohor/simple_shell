@@ -11,7 +11,7 @@ void pth_free(path_t *head)
 {
     if (head == NULL)
         return;
-    if (head-.next != NULL)
+    if (head->next != NULL)
         pth_free(head->next);
     free(head->ptr);
     free(head);
