@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 {
 	 (void)argc;
 
-	 king(argv[0]);
+	 argv[0];
 
 	 return (0);
 }
