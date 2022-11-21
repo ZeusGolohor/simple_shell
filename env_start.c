@@ -19,7 +19,7 @@ void env_start(char *str, char *value)
 		exit(1);
 	}
 	len = env_match(str);
-	var = malloc(sizeof(path_t));
+	var = malloc(sizeof(path_t copy));
 	if (!var)
 		perror("error, error, error");
 	val = _strcat(str, "=");
@@ -40,7 +40,7 @@ void env_start(char *str, char *value)
 		var->ptr = new_env;
 		var->next = node.next->next;
 		node.next = var;
-		free(path_t);
+		free(copy);
 	}
 	else 
 	{
