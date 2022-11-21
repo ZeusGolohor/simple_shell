@@ -1,7 +1,5 @@
-/*#include "zlshell.h"
-
-/**
- * main shell replica
+/**#include "zlshell.h"
+ * main - shell replica
  *
  * @argc: number of arguments passed
  * @argv: array of arguments to be executed
@@ -17,7 +15,7 @@ int main(int argc, char **argv)
 	 return (0);
 } */
 
-#include "main.h"
+#include "zlshell.h"
 
 /**
  * main - printing a prompt
