@@ -25,7 +25,7 @@ void shell_exit(char **args, char *input)
 		free(args);
 	}
 	pth_free(the_path);
-	pth_free(enviroment);
+	pth_free(environment);
 	exit(0);
 }
 
