@@ -82,7 +82,7 @@ void env_free(path_t *head);
 int _strlen(char *s);
 void _puts(char *str);
 int _putchar(char c);
-char *_strncpy(char *dest, char *src, int n)
+char *_strncpy(char *dest, char *src, int n);
 
 /* string_help.c*/
 char *_strdup(char *s); 
