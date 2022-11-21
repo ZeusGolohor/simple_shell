@@ -11,8 +11,7 @@
 int main(int argc, char **argv)
 {
 	 (void)argc;
-
-	 void king(argv[0]);
+	 (void)argv;
 
 	 return (0);
-} */
+}
