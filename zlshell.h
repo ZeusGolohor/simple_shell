@@ -61,7 +61,7 @@ void print_environment(void);
 path_t *_env(void);
 char *env_find(char *var);
 int env_match(char *input);
-void print_environment(void);
+void env_start(char *str, char *value);
 
 /* String tokenize Functions*/
 int waru(char z, const char *delim);
@@ -89,6 +89,8 @@ char *_strdup(char *s);
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
+char *_strcpy_src(char *dest, char *src, int n);
+
 
 /* atoi.c */
 int _numlen(int n);
@@ -109,26 +111,19 @@ list_t *node_starts_with(list_t *node, char *prefix, char c);
 list_t *get_nodeint_at_index(list_t *head, unsigned int index);
 
 
-
-/* exits.c */
-char *_strncpy(char *dest, char *src, int n);
-char *_strncat(char *dest, char *src, int n);
-char *_strchr(char *s, char c);
-
 /* Variables */
 path_t *the_path;
-path_t *enviroment;
+path_t *environment;
 void errenous(char **args, char *cmd, int errno);
 int line_count;
 void sig_handler(int sig_handler);
+void *_realloc(void *ptr, unsigned int before, unsigned int after);
+
 
 
 
 int _strspn(char *s, char *accept);
-
-
-
-
+char *_strncat(char *dest, char *src, int n);char *_strchr(char *s, char c);
 
 
 

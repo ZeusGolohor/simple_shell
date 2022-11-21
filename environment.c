@@ -50,7 +50,7 @@ char *env_find(char *var)
 	unsigned int count;
 
 	same = NULL;
-	node = enviornment; /*runs enviornment list (man env)*/
+	node = environment; /*runs environment list (man env)*/
 
 	while (node)
 	{
@@ -88,7 +88,7 @@ int env_match(char *input)
 	path_t *peter;
 	int count = 0, count_two = 0;
 
-	peter = enviornment; /*setting enviornment*/
+	peter = environment; /*setting environment*/
 	while (peter)
 	{
 		count = 0;
