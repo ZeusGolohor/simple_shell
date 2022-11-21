@@ -43,8 +43,9 @@ char **parse(char *buffer, char *delim)
 	{
 		perror("Error\n");
 		exit(99);
-		house = _strdup(buffer);
+		
 	}
+	house = _strdup(buffer);
 	if (!house)
 	{
 		perror("Error\n");
@@ -66,7 +67,7 @@ char **parse(char *buffer, char *delim)
 			free(words);
 			return (NULL);
 		}
-		_strncpy(words[i], tokens, count);
+		_strcpy(words[i], tokens);
 		i++;
 		tokens = _strtok(NULL, delim);
 	}
