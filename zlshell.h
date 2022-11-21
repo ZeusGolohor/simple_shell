@@ -45,7 +45,7 @@ int main(int argc, char **argv);
 void king(char *roar);
 char *read_line(void);
 char **parse(char *buffer, char *delim);
-int execute_shell(char **args, char *snail);
+int execute_shell(char **args, char *roar);
 
 /* Path functions */
 path_t *path_gen(void);
@@ -54,30 +54,38 @@ char *path_cat(char *s1, char *s2);
 
 /* Built-in functions */
 int isit_built(char **args, char *input);
+void shell_exit(char **args, char *input);
+void print_environment(void);
 
 /* Environment Functions */
 path_t *_env(void);
 char *env_find(char *var);
 int env_match(char *input);
+void print_environment(void);
 
 /* String tokenize Functions*/
+int waru(char z, const char *delim);
 char *_strtok(char str[], const char *delim);
 int word_count(char *str);
+char **parse(char *buffer, char *delim);
+
 
 /* Execution */
+int cmp_exec(char **args, char *roar);
+
 
 /* Functions that free */
 void pth_free(path_t *head);
 void env_free(path_t *head);
 
 /* string_funcs.c */
-int _strlen(char *s) 
+int _strlen(char *s);
 void _puts(char *str);
 int _putchar(char c);
 char *_strncpy(char *dest, char *src, int n)
 
 /* string_help.c*/
-char *_strdup(const char *s); 
+char *_strdup(char *s); 
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
