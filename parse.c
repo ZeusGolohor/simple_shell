@@ -40,10 +40,11 @@ char **parse(char *buffer, char *delim)
 	char **words = malloc(sizeof(char *) * (count + 1));
 
 	if (!words)
-		(
-			 perror("Error\n");
-			 exit(99);
-			 house = _strdup(buffer);
+	{
+		perror("Error\n");
+		exit(99);
+		house = _strdup(buffer);
+	}
 	if (!house)
 	{
 		perror("Error\n");
