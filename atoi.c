@@ -7,7 +7,7 @@
  * 
  * Return: The length of the number
  */
-int *_numlen(int n)
+int _numlen(int n)
 {
     int numlen = 0;
 
