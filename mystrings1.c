@@ -1,4 +1,4 @@
-#include "main.h"
+#include "zlshell.h"
 
 char *_strchr(char *s, char c)
 {

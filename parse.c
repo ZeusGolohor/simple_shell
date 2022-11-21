@@ -35,28 +35,29 @@ int word_count(char *str)
 char **parse(char *buffer, char *delim)
 {
 	char *tokens, *house;
-	int count - word_count(buffer);
+	int count = word_count(buffer);
 	int i = 0;
 	char **words = malloc(sizeof(char *) * (count + 1));
 
 	if (!words)
 		(
 			 perror("Error\n");
-			 exit(99);)
+			 exit(99);
 			 house = _strdup(buffer);
 	if (!house)
 	{
 		perror("Error\n");
 		return (NULL);
 	}
-	tokens _strtok(house, delim);
+	tokens = _strtok(house, delim);
 
 	while (tokens)
 	{
 		words[i] = malloc(sizeof(char) * (_strlen(tokens) + 1));
 		if (!words[i])
 		{
-			perror("Error") while (i >= 0)
+			perror("Error");
+			while (i >= 0)
 			{
 				free(words[i]);
 				i--;
@@ -64,7 +65,7 @@ char **parse(char *buffer, char *delim)
 			free(words);
 			return (NULL);
 		}
-		_strncpy(word[i], tokens);
+		_strncpy(words[i], tokens);
 		i++;
 		tokens = _strtok(NULL, delim);
 	}
