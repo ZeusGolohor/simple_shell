@@ -68,8 +68,12 @@ size_t print_list(const list_t *h)
 
 	while (h)
 	{
-		_puts(h->str ? h->str : "(nil)");
-		_puts("\n");
+		if (h->str)
+		{
+			_puts("\"(nil)\"");
+			_puts("\n");
+
+		}	
 		h = h->next;
 		i++;
 	}
@@ -125,7 +129,7 @@ int delete_nodeint_at_index(list_t **head, unsigned int index)
  */
 void free_listint2(list_t **head)
 {
-	listint_t *tmp;
+	list_t *tmp;
 
 	if (head == NULL)
 		return;
