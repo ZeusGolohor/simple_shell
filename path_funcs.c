@@ -12,7 +12,7 @@ path_t *path_gen(void)
 	path_t *node;
 	char *t_path, *token;
 
-	t_path - NULL;
+	t_path = NULL;
 	/* Node in linked list */
 	node = malloc(sizeof(path_t));
 	if (!node)
@@ -47,6 +47,6 @@ path_t *path_gen(void)
 			node->next = NULL;
 		}
 		free(t_path);
-		return (head);
 	}
+	return (head);
 }
