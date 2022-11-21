@@ -45,7 +45,7 @@ void env_start(char *str, char *value)
 	else 
 	{
 		while (node.next != NULL)
-			node = node.next;
+			node = *node.next;
 		var->ptr = new_env;
 		node.next = var;
 		var->next = NULL;
