@@ -7,7 +7,7 @@
  * 
  * Return: The length of the number
  */
-int _numlen(int n);
+int *_numlen(int n)
 {
     int numlen = 0;
 
@@ -26,7 +26,7 @@ int _numlen(int n);
  * 
  * Return: String converted from int
  */
-char *_atoi(int num);
+char *_atoi(int num)
 {
     char *st;
     int ct =0, place = 0, divider = 1000000000;
