@@ -13,7 +13,7 @@ void errenous(char **args, char *cmd, int errno)
 {
 	char *str;
 
-	str = atoi(line_count);
+	str = (&line_count);
 	write(STDOUT_FILENO, cmd, _strlen(cmd));
 	write(STDOUT_FILENO, ": ", 2);
 	write(STDOUT_FILENO, str, _strlen(str));
