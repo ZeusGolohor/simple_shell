@@ -24,7 +24,7 @@ void env_start(char *str, char *value)
 		perror("error, error, error");
 	val = _strcat(str, "=");
 	val_len = _strlen(val);
-	new_env = realloc(val, val_len, (val_len + _strlen(value) + 1));
+	new_env = realloc(val, (val_len + _strlen(value) + 1));
 	_strncpy(new_env, value, val_len);
 	copy = environment;
 	node = environment;
