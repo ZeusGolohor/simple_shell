@@ -40,7 +40,7 @@ void env_start(char *str, char *value)
 		var->ptr = new_env;
 		var->next = node.next->next;
 		node.next = var;
-		free(path_t copy);
+		free(path_t);
 	}
 	else 
 	{
