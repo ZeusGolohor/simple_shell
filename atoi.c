@@ -20,7 +20,7 @@ int _numlen(int n)
 }
 
 /**
- * _atoi - Function converts into to a string
+ * _atoi - Function converts int into to a string
  * 
  * @num: Integer to be printed
  * 
