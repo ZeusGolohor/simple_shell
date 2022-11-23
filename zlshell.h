@@ -5,26 +5,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include "signal.h"
 
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
 
 extern char **environ;
-
-/**
- * struct liststr - singly linked list
- * 
- * @num: the number field
- * @str: a string
- * @next: points to the next node
- */
-typedef struct liststr
-{
-    int num;
-    char str;
-    struct liststr *next;
-}list_t;
 
 /**
  * struct path - linked list of environment variables
@@ -36,7 +23,7 @@ typedef struct path
 {
     char *ptr;
     struct path *next;
-}path_t;
+} path_t;
 
 /* Entry point */
 int main(int argc, char **argv);
@@ -45,7 +32,7 @@ int main(int argc, char **argv);
 void king(char *roar);
 char *read_line(void);
 char **parse(char *buffer, char *delim);
-int execute_shell(char **args, char *snail);
+int execute_shell(char **args, char *roar);
 
 /* Path functions */
 path_t *path_gen(void);
@@ -54,76 +41,55 @@ char *path_cat(char *s1, char *s2);
 
 /* Built-in functions */
 int isit_built(char **args, char *input);
+void shell_exit(char **args, char *input);
+void print_environment(void);
 
 /* Environment Functions */
 path_t *_env(void);
 char *env_find(char *var);
 int env_match(char *input);
+void env_start(char *str, char *value);
 
 /* String tokenize Functions*/
+int waru(char z, const char *delim);
 char *_strtok(char str[], const char *delim);
 int word_count(char *str);
+char **parse(char *buffer, char *delim);
 
 /* Execution */
+int cmp_exec(char **args, char *roar);
+int fork_exec(char **args, char *roar);
 
 /* Functions that free */
 void pth_free(path_t *head);
 void env_free(path_t *head);
 
 /* string_funcs.c */
-int _strlen(char *s) //0x05
-void _puts(char *str); //0x05
+int _strlen(char *s);
+void _puts(char *str);
 int _putchar(char c);
-char *_strncpy(char *dest, char *src, int n)
+char *_strncpy(char *dest, char *src, int n);
 
 /* string_help.c*/
-char *_strdup(const char *s); //0x0B 
-int _strcmp(char *s1, char *s2); //0x06
-char *_strcat(char *dest, char *src); //0x06
-char *_strcpy(char *dest, char *src); //0x05
+char *_strdup(char *str); 
+int _strcmp(char *st1, char *st2);
+char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
+char *_strcpy_src(char *dest, char *src, int n);
 
-/* mylists.c*/
-list_t *add_nodeint(list_t **head, const int n); //0x13
-list_t *add_nodeint_end(list_t **head, const int n); //0x13
-size_t print_list(const list_t *h); //0x12
-int delete_nodeint_at_index(list_t **head, unsigned int index); //0x13
-void free_listint2(list_t **head); //0x13
-
-/* mylists1.c*/
-size_t list_len(const list_t *h); //0x12
-char **list_to_strings(list_t *head); //new
-size_t print_list_all(const list_t *h); //new
-list_t *node_starts_with(list_t *node, char *prefix, char c); //new
-list_t *get_nodeint_at_index(list_t *head, unsigned int index); //0x13
-
-
-
-
-/* exits.c */
-char *_strncpy(char *dest, char *src, int n); //0x06
-char *_strncat(char *dest, char *src, int n); //0x06
-char *_strchr(char *s, char c); //0x07
+/* atoi.c */
+int _numlen(int n);
+char *_atoi(int num);
 
 /* Variables */
 path_t *the_path;
-path_t *enviroment;
+path_t *environment;
 void errenous(char **args, char *cmd, int errno);
 int line_count;
 void sig_handler(int sig_handler);
+void *_realloc(void *ptr, unsigned int before, unsigned int after);
+int find_match(const char *s1, char *s2);
+char *_getenv(const char *name);
+char *getpath(void);
 
-
-
-
-char *_strchr(char *s, char c); 
-int _strspn(char *s, char *accept);
-
-
-
-
-
-
-
-
-
-
-#endif /* MAIN_H */
+#endif /* ZLSHELL_H */

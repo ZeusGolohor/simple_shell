@@ -11,7 +11,7 @@ int _strlen(char *s)
 {
 	int a = 0;
 
-	for (; *s++;)
+	while (s[a] != '\0')
 		a++;
 	return (a);
 }
@@ -27,12 +27,11 @@ void _puts(char *str)
 {
 	int x = 0;
 
-	while (str[x])
+	for (x = 0; str[x] != '\0'; x++)
 	{
-		_putchar(str[x]);
-		x++;
+		putchar(str[x]);
 	}
-	_putchar('\n');
+	putchar('\n');
 }
 
 /**
@@ -60,11 +59,8 @@ char *_strncpy(char *dest, char *src, int n)
 {
 	int i;
 
-	for (i = 0; i < n && src[i] != '\0'; i++)
-		dest[i] = src[i];
-
-	for (; i < n; i++)
-		dest[i] = '\0';
-
+	for (i = 0 ; src[i] != '\0' ; i++, n++)
+		dest[i] = src[n];
+	dest[i] = '\0';
 	return (dest);
 }

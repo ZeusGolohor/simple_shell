@@ -1,4 +1,4 @@
-#include "main.h"
+#include "zlshell.h"
 
 char *_strchr(char *s, char c)
 {
@@ -56,8 +56,8 @@ char *_strtok(char str[], const char *delim)
 
 	if (str != NULL)
 	{
-		if (cmp_chars(str, delim))
-			return (NULL);
+		/*if (cmp_chars(str, delim))
+			return (NULL); */
 		splitted = str; /*Store first address*/
 		i = _strlen(str);
 		str_end = &str[i]; /*Store last address*/

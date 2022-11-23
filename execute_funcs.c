@@ -1,7 +1,7 @@
 #include "zlshell.h"
 
 /**
- * cmp_exec -Compares arguments to executable commands
+ * cmp_exec - Compares arguments to executable commands
  * 
  * @args: argument recieved 
  * @roar: the shell
@@ -28,7 +28,6 @@ int cmp_exec(char **args, char *roar)
 	return (1);
 }
 
-}
 /**
  * execute_shell - forks the current process then exectues the command
  * 
