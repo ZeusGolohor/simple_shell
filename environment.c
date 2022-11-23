@@ -71,7 +71,7 @@ char *env_find(char *var)
 	}
 	store = malloc(sizeof(char) * (_strlen(same) + 1));
 	if (!store)
-		/*free (store);*/
+		free(store);
 		return (NULL);
 	_strcpy(store, same);
 	return (store);
@@ -88,7 +88,8 @@ int env_match(char *input)
 	path_t *peter;
 	int count = 0, count_two = 0;
 
-	peter = environment; /*setting environment*/
+	/*setting environment*/
+	peter = environment; 
 	while (peter)
 	{
 		count = 0;

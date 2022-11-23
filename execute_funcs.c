@@ -55,7 +55,8 @@ int execute_shell(char **args, char *roar)
 	}
 	else
 	{
-		do {
+		do 
+		{
 			waitpid(child_pid, &status, WUNTRACED);
 		} while (WIFEXITED(status) == 0 && WIFSIGNALED(status) == 0);
 	}
