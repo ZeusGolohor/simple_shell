@@ -16,7 +16,7 @@ void shell_exit(char **args, char *input)
 		free(input);
 	if (args)
 	{
-		while (args[1 ])
+		while (args[l])
 		{
 			if(args[l])
 				free(args[l]);

@@ -16,7 +16,7 @@ int waru(char z, const char *delim)
 		{
 			return (1);
 		}
-		delim++;
+		++delim;
 	}
 	return (0);
 }
