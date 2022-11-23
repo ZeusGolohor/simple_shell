@@ -27,8 +27,8 @@ void env_start(char *str, char *value)
 	val_len = _strlen(val);
 	new_env = _realloc(val, val_len, (val_len + _strlen(value) + 1));
 	_strncpy(new_env, value, val_len);
-	copy = *environment;
-	node = *environment;
+	copy = environment;
+	node = environment;
 	if (len >= 0)
 	{
 		while (counter != (len - 1))
@@ -40,13 +40,13 @@ void env_start(char *str, char *value)
 		copy = copy->next;
 		var->ptr = new_env;
 		var->next = node->next->next;
-		node.next = var;
+		node->next = var;
 		free(copy);
 	}
 	else 
 	{
 		while (node->next != NULL)
-			node = node.next;
+			node = node->next;
 		var->ptr = new_env;
 		node->next = var;
 		var->next = NULL;

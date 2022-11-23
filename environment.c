@@ -71,8 +71,10 @@ char *env_find(char *var)
 	}
 	store = malloc(sizeof(char) * (_strlen(same) + 1));
 	if (!store)
+	{
 		free(store);
 		return (NULL);
+	}
 	_strcpy(store, same);
 	return (store);
 }
