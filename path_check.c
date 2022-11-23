@@ -10,7 +10,7 @@
  */
 char *path_check(path_t *head, char *line)
 {
-	struct stat falcon;
+/*	struct stat falcon;*/
 	path_t *temp;
 	char *arguments;
 
@@ -24,10 +24,10 @@ char *path_check(path_t *head, char *line)
 		if (!arguments)
 			return (NULL);
 		
-		if (stat(arguments, &falcon) == 0)
+		/*if (stat(arguments, &falcon) == 0)
 		{
 			return (arguments);
-		}
+		}*/
 		free(arguments);
 		temp = temp->next;
 	}
