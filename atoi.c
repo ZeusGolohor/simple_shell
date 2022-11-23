@@ -2,9 +2,7 @@
 
 /**
  * _numlen = Functions finds the length of number being passed
- * 
  * @n: Number being passed
- * 
  * Return: The length of the number
  */
 int _numlen(int n)

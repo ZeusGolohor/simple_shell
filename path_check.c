@@ -50,7 +50,7 @@ char *path_cat(char *s1, char *s2)
 	if (s1 == NULL)
 		s1 = "";
 	if (s2 == NULL)
-		s2 ="";
+		s2 = "";
 
 	together = malloc(sizeof(char) * (_strlen(s1) + _strlen(s2) + 2));
 	if (together == NULL)

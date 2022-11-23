@@ -35,6 +35,8 @@ path_t *path_gen(void)
 		if (token)
 		node->ptr = _strdup(token);
 		/* Replaces with NULL*/
+		token = _strtok(NULL, "=:;");
+
 		if (token)
 		{
 			/* Place the token in the linked list if it exists*/
@@ -44,7 +46,7 @@ path_t *path_gen(void)
 				pth_free(head);
 				return (NULL);
 			}
-			node->next = NULL;
+			node = node->next;
 		}
 		else 
 			node->next = NULL;

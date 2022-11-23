@@ -11,7 +11,7 @@ int word_count(char *str)
 {
 	int i;
 	int count = 1;
-	int delim = ' ';
+	char delim = ' ';
 
 	if (!str)
 		return (-1);
@@ -43,7 +43,6 @@ char **parse(char *buffer, char *delim)
 	{
 		perror("Error\n");
 		exit(99);
-		
 	}
 	house = _strdup(buffer);
 	if (!house)
