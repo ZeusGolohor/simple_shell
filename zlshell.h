@@ -1,6 +1,6 @@
 #ifndef ZLSHELL_H
 #define ZLSHELL_H
-#define _XOPEN_SOURCE 700
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -91,14 +91,4 @@ int find_match(const char *s1, char *s2);
 char *_getenv(const char *name);
 char *getpath(void);
 
-
-
-int _strspn(char *s, char *accept);
-char *_strncat(char *dest, char *src, int n);char *_strchr(char *s, char c);
-
-
-
-
-
-
-#endif /* MAIN_H */
+#endif /* ZLSHELL_H */
