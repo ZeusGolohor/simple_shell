@@ -87,7 +87,7 @@ char *_strncpy(char *dest, char *src, int n);
 
 /* string_help.c*/
 char *_strdup(char *str); 
-int _strcmp(char *s1, char *s2);
+int _strcmp(char *st1, char *st2);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 char *_strcpy_src(char *dest, char *src, int n);

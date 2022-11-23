@@ -18,7 +18,7 @@ char *_strdup(char *str)
 		return (NULL);
 	}
 
-	x = malloc(sizeof(char) * (_strlen(str) = 1));
+	x = malloc(sizeof(char) * (_strlen(str) + 1));
 	
 	for (count = 0; str[count] != '\0'; count++)
 	{
@@ -36,7 +36,7 @@ char *_strdup(char *str)
  *
  * Return: 0 if strings the same; negative or positive if not the same
  */
-int _strcmp(char *s1, char *s2)
+int _strcmp(char *st1, char *st2)
 {
 	while (*st1 != '\0' && *st2 != '\0' && (*st1 == *st2))
 	{

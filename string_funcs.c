@@ -11,9 +11,9 @@ int _strlen(char *s)
 {
 	int a = 0;
 
-	for (a[i] != '\0')
+	while (s[a] != '\0')
 		a++;
-	return (i);
+	return (a);
 }
 
 /**
@@ -27,7 +27,7 @@ void _puts(char *str)
 {
 	int x = 0;
 
-	for (x = 0; str[x] != '\0'; i++)
+	for (x = 0; str[x] != '\0'; x++)
 	{
 		putchar(str[x]);
 	}
