@@ -1,7 +1,7 @@
 #include "zlshell.h"
 
 /**
- * cmp_exec -Compares arguments to executable commands
+ * cmp_exec - Compares arguments to executable commands
  * 
  * @args: argument recieved 
  * @roar: the shell
@@ -55,8 +55,7 @@ int execute_shell(char **args, char *roar)
 	}
 	else
 	{
-		do 
-		{
+		do {
 			waitpid(child_pid, &status, WUNTRACED);
 		} while (WIFEXITED(status) == 0 && WIFSIGNALED(status) == 0);
 	}

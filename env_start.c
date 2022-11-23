@@ -1,5 +1,4 @@
 #include "zlshell.h"
-
 /**
  * env_start - Creates a new environment variable from input
  * 
@@ -16,7 +15,7 @@ void env_start(char *str, char *value)
 
 	if (!str || !value)
 	{
-		perror("Environment variable not passed");
+		perror("environment variable not passed");
 		exit(1);
 	}
 	len = env_match(str);

@@ -2,9 +2,7 @@
 
 /**
  * king - Takes input from the shell
- *
  * @roar: The bloody shell
- *
  * Return: void
  */
 void king(char *roar)

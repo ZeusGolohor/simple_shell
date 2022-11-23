@@ -29,6 +29,7 @@
     "**/.vscode/**"
   ],
   "files.associations": {
-    "types.h": "c"
+    "types.h": "c",
+    "shell.h": "c"
   }
 }

@@ -23,7 +23,7 @@ typedef struct path
 {
     char *ptr;
     struct path *next;
-}path_t;
+} path_t;
 
 /* Entry point */
 int main(int argc, char **argv);
@@ -58,6 +58,7 @@ char **parse(char *buffer, char *delim);
 
 /* Execution */
 int cmp_exec(char **args, char *roar);
+int fork_exec(char **args, char *roar);
 
 /* Functions that free */
 void pth_free(path_t *head);

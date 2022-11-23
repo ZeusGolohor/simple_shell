@@ -1,11 +1,8 @@
 #include "zlshell.h"
-
 /**
  * shell_exit - exit current process
- * 
  * @args: arguments
  * @input: input
- * 
  * Return: void
  */
 void shell_exit(char **args, char *input)
@@ -18,7 +15,7 @@ void shell_exit(char **args, char *input)
 	{
 		while (args[l])
 		{
-			if(args[l])
+			if (args[l])
 				free(args[l]);
 			l++;
 		}
@@ -31,7 +28,6 @@ void shell_exit(char **args, char *input)
 
 /**
  * print_environment - Prints the environment
- * 
  * Return: void
  */
 void print_environment(void)
