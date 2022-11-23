@@ -10,6 +10,7 @@
  */
 char *path_check(path_t *head, char *line)
 {
+	struct stat falcon;
 	path_t *temp;
 	char *arguments;
 
@@ -22,6 +23,11 @@ char *path_check(path_t *head, char *line)
 		arguments = path_cat(temp->ptr, line);
 		if (!arguments)
 			return (NULL);
+		
+		if (stat(arguments, &falcon) == 0)
+		{
+			return (arguments);
+		}
 		free(arguments);
 		temp = temp->next;
 	}
@@ -58,6 +64,6 @@ char *path_cat(char *s1, char *s2)
 	for (count2 = 0; s2[count2]; count2++)
 		together[count1 + count2] = s2[count2];
 	together[count1 + count2] = '\0';
-	printf("aaa%s\n", together);
+	printf("%s\n", together);
 	return (together);
 }

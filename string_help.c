@@ -10,23 +10,16 @@
  */
 char *_strdup(char *str)
 {
-	char *x;
-	int strlen;
+	char *x = NULL;
 	int count;
 
 	if (str == NULL)
 	{
 		return (NULL);
 	}
-	for (strlen = 0; str[strlen] != '\0'; strlen++)
-	{
 
-	}
-	x = malloc(strlen * sizeof(char) + 1);
-	if (x == NULL)
-	{
-		return (NULL);
-	}
+	x = malloc(sizeof(char) * (_strlen(str) = 1));
+	
 	for (count = 0; str[count] != '\0'; count++)
 	{
 		x[count] = str[count];
@@ -45,16 +38,18 @@ char *_strdup(char *str)
  */
 int _strcmp(char *s1, char *s2)
 {
-	int i;
-
-	for (i = 0; s1[i] != '\0' || s2[i] != '\0'; i++)
+	while (*st1 != '\0' && *st2 != '\0' && (*st1 == *st2))
 	{
-		if (s1[i] != s2[i])
-
-			return (s1[i] - s2[i]);
+		st1++;
+		st2++;
 	}
-	return (0);
+
+	if (*st1 == '\0' && *st2 == '\0')
+		return (0);
+	else
+		return ((int)(*st1 - *st2));
 }
+
 
 /**
  * _strcat - Concatenate two strings
@@ -66,17 +61,34 @@ int _strcmp(char *s1, char *s2)
  */
 char *_strcat(char *dest, char *src)
 {
-	int len1;
-	int len2;
-	int i;
+	char *string = NULL;
+	int ct1 = 0, ct2 = 0, st1 = 0, st2 = 0;
 
-	len1 = strlen(dest);
-	len2 = strlen(src);
-	for (i = 0; i <= len2; i++)
+	while (dest[st1])
 	{
-		dest[len1 + i] = src[i];
+		st1++;
 	}
-	return (dest);
+	while (src[st2])
+	{
+		st2++;
+	}
+
+	string = malloc(sizeof(st1 + st2 + 2));
+
+	if (!string)
+		free(string);
+	for (ct1 = 0 ; dest[ct1] != '\0' ; ct1++)
+	{
+		string[ct1] = dest[ct1];
+	}
+
+	for (ct2 = 0 ; src[ct2] != '\0' ; ct2++)
+	{
+		string[ct1] = src[ct2];
+		ct1++;
+	}
+	string[ct1] = '\0';
+	return (string);
 }
 
 /**

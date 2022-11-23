@@ -46,7 +46,9 @@ path_t *path_gen(void)
 			}
 			node->next = NULL;
 		}
-		free(t_path);
+		else 
+			node->next = NULL;
 	}
+	free(t_path);
 	return (head);
 }
