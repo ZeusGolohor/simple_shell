@@ -13,20 +13,6 @@
 
 extern char **environ;
 
-/**	
- * struct liststr - singly linked list	
- * 	
- * @num: the number field	
- * @str: a string	
- * @next: points to the next node	
- */	
-typedef struct liststr	
-{	
-    int n;	
-    char str;	
-    struct liststr *next;	
-}list_t;
-
 /**
  * struct path - linked list of environment variables
  * 
@@ -70,10 +56,8 @@ char *_strtok(char str[], const char *delim);
 int word_count(char *str);
 char **parse(char *buffer, char *delim);
 
-
 /* Execution */
 int cmp_exec(char **args, char *roar);
-
 
 /* Functions that free */
 void pth_free(path_t *head);
@@ -92,25 +76,9 @@ char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 char *_strcpy_src(char *dest, char *src, int n);
 
-
 /* atoi.c */
 int _numlen(int n);
 char *_atoi(int num);
-
-/* mylists.c*/
-list_t *add_nodeint(list_t **head, const int n);
-list_t *add_nodeint_end(list_t **head, const int n);
-size_t print_list(const list_t *h);
-int delete_nodeint_at_index(list_t **head, unsigned int index);
-void free_listint2(list_t **head);
-
-/* mylists1.c*/
-size_t list_len(const list_t *h);
-char **list_to_strings(list_t *head);
-size_t print_list_all(const list_t *h);
-list_t *node_starts_with(list_t *node, char *prefix, char c);
-list_t *get_nodeint_at_index(list_t *head, unsigned int index);
-
 
 /* Variables */
 path_t *the_path;
@@ -119,7 +87,9 @@ void errenous(char **args, char *cmd, int errno);
 int line_count;
 void sig_handler(int sig_handler);
 void *_realloc(void *ptr, unsigned int before, unsigned int after);
-
+int find_match(const char *s1, char *s2);
+char *_getenv(const char *name);
+char *getpath(void);
 
 
 
