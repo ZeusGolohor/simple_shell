@@ -10,9 +10,10 @@
  */
 void env_start(char *str, char *value)
 {
-	path_t *var, copy, node;
+	path_t *var, *copy, *node;
 	char *val, *new_env;
 	int val_len = 0, len = 0, counter = 0;
+	
 	if (!str || !value)
 	{
 		perror("Environment variable not passed");
