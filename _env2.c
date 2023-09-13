@@ -1,54 +1,58 @@
 #include "main.h"
 
-int _setenv(env_t ***env, char **args, char ***envi)
+int _setenv(env_t ***env, char **args)
 {
 	env_t *temp;
 	int seen = 0;
 	env_t *new_node;
 	char *separator = "=";
 
+/*	if ((args == NULL) || (*args == NULL))
+		exit(0);
 	if ((args[1] == NULL) || (args[2] == NULL))
 	{
-		dprintf(STDOUT_FILENO, "usage: setenv VARIABLE VALUE\n");
+		dprintf(STDERR_FILENO, "usage: setenv VARIABLE VALUE\n");
 		dprintf(STDOUT_FILENO, "($) ");
 		return (-1);
-	}
+	}*/
 	if (**env != NULL)
 		temp = **env;
 	while (temp->next != NULL)
 	{
+	/*	printf("%s\n", args[1]);*/
 		if ((args[1] != NULL) && (strcmp(temp->var, args[1]) == 0))
 		{
 			seen = 1;
-			printf("%s\n", temp->var_n_val);
+		/*	printf("%s\n", temp->var_n_val);*/
+			printf("seen\n");
 		}
 		temp = temp->next;
 	}
-	printf("%s\n", args[1]);
+/*	printf("%s\n", args[1]);*/
 	if ((temp->next == NULL) && (seen == 0))
 	{
-		printf("env not found, creeating it now\n");
-		new_node = malloc(sizeof(env_t));
-		if (new_node == NULL)
+			new_node = malloc(sizeof(env_t));
+			if (new_node == NULL)
+				return (-1);
+			/*new_node->var = malloc(sizeof(char) * (strlen(args[1] + 1)));*/
+			new_node->var = malloc(sizeof(char) * (strlen(args[1]) + 1));
+			new_node->val = malloc(sizeof(char) * (strlen(args[2]) + 1));
+			new_node->var_n_val = malloc(sizeof(char) * (strlen(args[1]) + strlen(separator) + strlen(args[2]) + 1));
+		if ((new_node->var == NULL) || (new_node->val == NULL) || (new_node->var_n_val == NULL))
 			return (-1);
-		new_node->var = malloc(sizeof(char) * (strlen(args[1] + 1)));
-		new_node->val = malloc(sizeof(char) * (strlen(args[2] + 1)));
-		new_node->var_n_val = malloc(sizeof(char) * (strlen(args[1]) + strlen(separator) + strlen(args[2]) + 1));
-	if ((new_node->var == NULL) || (new_node->val == NULL) || (new_node->var_n_val == NULL))
-		return (-1);
-	new_node->var[0] = '\0';
-	new_node->val[0] = '\0';
-	new_node->var_n_val[0] = '\0';
-	strcat(new_node->var_n_val, args[1]);
-	strcat(new_node->var_n_val, separator);
-	strcat(new_node->var_n_val, args[2]);
-	new_node->next = NULL;
-	_add_env(*env, new_node);
-/*	_free_env_b_head(*envi);*/
-	_setup_env(*env, envi); 
-	}
-	printf("printing new env\n");
-	_print_env(*env);
+		new_node->var[0] = '\0';
+		new_node->val[0] = '\0';
+		new_node->var_n_val[0] = '\0';
+		strcat(new_node->var_n_val, args[1]);
+		strcat(new_node->var_n_val, separator);
+		strcat(new_node->var_n_val, args[2]);
+		new_node->next = NULL;
+		_add_env(*env, new_node);
+/*		_free_env_b_head(*env, envi, av, status);*/
+	/*	_print_env(*env);
+		_setup_env(*env, envi); 
+		_print_env2(*envi);*/
+	}	
 	return (0);
 }
 
@@ -65,4 +69,29 @@ int _print_env2(char **env)
 		++i;
 	}
 	return (0);
+}
+
+env_t *_create_env_node(char **args)
+{
+	env_t *new_env_node;
+	char *variable = args[1], *value = args[2], *separator = "=";
+
+	new_env_node = malloc(sizeof(env_t));
+	if (new_env_node == NULL)
+		return (NULL);
+	new_env_node->var = malloc(sizeof(char) * (strlen(variable) + 1));
+	new_env_node->val = malloc(sizeof(char) * (strlen(value) + 1));
+	new_env_node->var_n_val = malloc(sizeof(char) * (strlen(variable) + strlen(separator) + strlen(value) + 1));
+	if ((new_env_node->var == NULL) || (new_env_node->val == NULL) || (new_env_node->var_n_val == NULL))
+		return (NULL);
+	new_env_node->var[0] = '\0';
+	new_env_node->val[0] = '\0';
+	new_env_node->var_n_val[0] = '\0';
+	strcat(new_env_node->var, variable);
+	strcat(new_env_node->val, value);
+	strcat(new_env_node->var_n_val,new_env_node->var);
+	strcat(new_env_node->var_n_val,separator);
+	strcat(new_env_node->var_n_val,new_env_node->val);
+	new_env_node->next = NULL;
+	return (new_env_node);	
 }

@@ -32,17 +32,18 @@ int **, char *, int **, env_t **);
 ssize_t _getline_check(char *);
 char **_strtok(char *, ssize_t **);
 void _free(char **);
-void _cmd_check(char *, char **, char **, char **,
+void _cmd_check(char *, char **, char **, char ***,
 int **, ssize_t **, char *, int **, env_t **);
 ssize_t _getline(char **, int **);
-int _setup_env_nodes(env_t **);
+int _setup_env_nodes(env_t **, char **);
 int _setup_env(env_t **, char ***);
-int _add_env(env_t **_env, env_t *new_env_node);
+int _add_env(env_t **, env_t *);
 int _print_env(env_t **);
 int _print_env2(char **);
 int _free_env_nodes(env_t **);
 int _free_env(char **);
-int _free_env_b_head(char **);
+int _free_env_b_head(char ***);
 void _ctrl_c_handler(int);
-int _setenv(env_t ***, char **, char ***);
+int _check_or_create_env_node(env_t **, char **);
+env_t *_create_env_node(char **);
 #endif

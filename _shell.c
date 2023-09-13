@@ -13,14 +13,14 @@ int main(int ac, char **av)
 {
 	int status = 0, *_status = &status, **__status = &_status;
 	env_t *_env = NULL, **env = &_env;
-	char *_envi = NULL, **envi = &_envi;
+	char *__envi = NULL, **_envi = &__envi, ***envi = &_envi;
 
 	signal(SIGINT, _ctrl_c_handler);
-	_setup_env_nodes(env);
-	_setup_env(env, &envi);
-	_shell(ac, av, envi, __status, env);
-	_free_env_nodes(env);
-	_free_env(envi);
+	_setup_env_nodes(env, environ);
+	_setup_env(env, envi);
+	_shell(ac, av, *envi, __status, env);
+/*	_free_env_nodes(env);
+	_free_env(*envi);*/
 	return (0);
 }
 
@@ -44,7 +44,7 @@ char **envi, int **status, env_t **env)
 
 	if ((*envi == NULL) && (*env == NULL))
 	{
-		_setup_env_nodes(env);
+		_setup_env_nodes(env, environ);
 		_setup_env(env, &envi);
 	}
 	if (isatty(STDIN_FILENO) == 1)
@@ -57,7 +57,7 @@ char **envi, int **status, env_t **env)
 			if ((args == NULL) && (isatty(STDIN_FILENO) == 1))
 				dprintf(STDOUT_FILENO, "%s", ter_str);
 			else if ((args != NULL) && (args[0][0] != 0))
-				_cmd_check(ter_str, args, av, envi, status,
+				_cmd_check(ter_str, args, av, &envi, status,
 				&_arr_size, lineptr, &_semi_seen, env);
 			else if (isatty(STDIN_FILENO) == 1)
 				dprintf(STDOUT_FILENO, "%s", ter_str);
@@ -75,4 +75,6 @@ char **envi, int **status, env_t **env)
 	if (isatty(STDIN_FILENO) == 1)
 		dprintf(STDOUT_FILENO, "\n");
 	free(lineptr);
+	_free_env(envi);
+	_free_env_nodes(env);
 }

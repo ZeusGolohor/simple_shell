@@ -45,3 +45,25 @@ int _free_env(char **envi)
 	free(envi);
 	return (0);
 }
+
+int _free_env_b_head(char ***envi)
+{
+	int i;
+	
+	if ((*envi == NULL) || (**envi == NULL))
+		return (-1);
+	i = 0;
+	while ((*envi)[i] != NULL)
+	{
+		free((*envi)[i]);
+		++i;
+	}
+/*	*envi = temp2;
+         _setup_env(env, envi);
+	_print_env2(*envi);*/
+/*	printf("\nprinting new env\n");
+	_print_env2(temp2);
+	_shell(0, av, temp2, status, env);*/
+/*	 _print_env2(*envi);*/
+	return (0);
+}
