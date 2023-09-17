@@ -39,7 +39,7 @@ void _shell(__attribute__((unused)) int ac, char **av,
 char **envi, int **status, env_t **env)
 {
 	ssize_t size = -1, arr_size = 1, *_arr_size = &arr_size;
-	char ter_str[] = "($) ", *lineptr = NULL, **args;
+	char *lineptr = NULL, **args;
 	int semi_seen = 0, *_semi_seen = &semi_seen;
 
 	if ((*envi == NULL) && (*env == NULL))
@@ -48,19 +48,19 @@ char **envi, int **status, env_t **env)
 		_setup_env(env, &envi);
 	}
 	if (isatty(STDIN_FILENO) == 1)
-		dprintf(STDOUT_FILENO, "%s", ter_str);
+		_p_ter_str(env);
 	while ((size = _getline(&lineptr, &_semi_seen)) > 0)
 	{
 		if (size > 1)
 		{
 			args = _strtok(lineptr, &_arr_size);
 			if ((args == NULL) && (isatty(STDIN_FILENO) == 1))
-				dprintf(STDOUT_FILENO, "%s", ter_str);
+				_p_ter_str(env);
 			else if ((args != NULL) && (args[0][0] != 0))
-				_cmd_check(ter_str, args, av, &envi, status,
-				&_arr_size, lineptr, &_semi_seen, env);
+				_cmd_check(args, av, &envi, status,
+				lineptr, &_semi_seen, env);
 			else if (isatty(STDIN_FILENO) == 1)
-				dprintf(STDOUT_FILENO, "%s", ter_str);
+				_p_ter_str(env);
 			if (args != NULL)
 				_free(args);
 			free(lineptr);
@@ -68,7 +68,7 @@ char **envi, int **status, env_t **env)
 		else if (size == 1)
 		{
 			if (isatty(STDIN_FILENO) == 1)
-				dprintf(STDOUT_FILENO, "%s", ter_str);
+				_p_ter_str(env);
 			free(lineptr);
 		}
 	}

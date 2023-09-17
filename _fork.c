@@ -9,7 +9,7 @@
  *
  * Return: void.
  */
-void _fork(char *ter_str, char **args, char **av, char **envi, int **status, char *lineptr, int **semi_seen, env_t **env)
+void _fork(char **args, char **av, char **envi, int **status, char *lineptr, int **semi_seen, env_t **env)
 {
 	pid_t cid;
 	int sta;
@@ -30,12 +30,12 @@ void _fork(char *ter_str, char **args, char **av, char **envi, int **status, cha
 				_free(args);
 				free(lineptr);
 				_shell(0, av, envi, status, env);
-				_free_env(envi);
-				_free_env_nodes(env);
+			/*	_free_env(envi);
+				_free_env_nodes(env);*/
 				exit(2);
 			}
 			if ((isatty(STDIN_FILENO) == 1) && (**semi_seen != 1))
-				dprintf(STDOUT_FILENO, "%s", ter_str);
+				_p_ter_str(env);
 			if (**semi_seen == 1)
 				**semi_seen = 0;
 		}
@@ -47,10 +47,10 @@ void _fork(char *ter_str, char **args, char **av, char **envi, int **status, cha
 		_free(args);
 		free(lineptr);
 		_shell(0, av, envi, status, env);
-		_free_env(envi);
-		_free_env_nodes(env);
+	/*	_free_env(envi);
+		_free_env_nodes(env);*/
 		exit(127);
 		if (isatty(STDIN_FILENO) == 1)
-			dprintf(STDOUT_FILENO, "%s", ter_str);
+			_p_ter_str(env);
 	}
 }

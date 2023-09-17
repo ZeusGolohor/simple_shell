@@ -95,3 +95,61 @@ env_t *_create_env_node(char **args)
 	new_env_node->next = NULL;
 	return (new_env_node);	
 }
+
+int _unsetenv(env_t **env, char **args)
+{
+	env_t *head, *mem_to_free;
+
+	if (env == NULL)
+		return (-1);
+	head = *env;
+	while (head != NULL)
+	{
+		if (head->next == NULL)
+		{
+			dprintf(STDERR_FILENO, "env variable: \"%s\" not found.\n", args[1]);
+			break;
+		}
+		else if (strcmp(head->next->var, args[1]) == 0)
+		{
+			mem_to_free = head->next;
+			if (head->next->next != NULL)
+				head->next = head->next->next;
+			else
+				head->next = NULL;
+/*			free(mem_to_free->var);
+			free(mem_to_free->val);
+			free(mem_to_free->var_n_val);
+			free(mem_to_free);*/
+			if (_free_single_env_node(mem_to_free) == -1)
+				return (-1);
+			break;
+		}
+		else if (strcmp(head->var, args[1]) == 0)
+		{
+			mem_to_free = head;
+			*env = head->next;
+			/*free(mem_to_free->var);
+			free(mem_to_free->val);
+			free(mem_to_free->var_n_val);
+			free(mem_to_free);*/
+			if (_free_single_env_node(mem_to_free) == -1)
+				return (-1);
+			break;
+		}
+		head = head->next;
+	}
+	return (0);
+}
+
+int _free_single_env_node(env_t *mem_to_free)
+{
+	if (mem_to_free == NULL)
+		return (-1);
+
+	free(mem_to_free->var);
+	free(mem_to_free->val);
+	free(mem_to_free->var_n_val);
+	free(mem_to_free);
+	return (0);
+}
